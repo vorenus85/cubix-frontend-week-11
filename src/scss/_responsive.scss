@@ -41,4 +41,8 @@
   .weather-card {
     width: calc(20% - var(--gutter));
   }
+
+  .weather-container {
+    padding: 0 5%;
+  }
 }
