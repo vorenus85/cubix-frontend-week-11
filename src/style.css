@@ -1,96 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --primary-color: rgb(243, 198, 49);
+  --secondary-color: rgb(1, 110, 1);
+  --header-bg-color: var(--primary-color);
+  --gutter: 10px;
+  --btn-bdrs: 5px;
+  --input-bdrs: 5px;
+  --weather-card-bg: var(--secondary-color);
+  --weather-card-brds: 10px;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* ---------- Base elements ---------- */
+
+button,
+input {
+  padding: calc(var(--gutter) / 2) var(--gutter);
+  border-radius: var(--input-bdrs);
+  border: 1px solid #c5c5c5;
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #3178c6aa);
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.btn {
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  border-radius: var(--btn-bdrs);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.hidden {
+  display: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+/* ---------- Layout ---------- */
+
+.container {
+  width: 100%;
+  padding: 0 var(--gutter);
+}
+
+/* ---------- Header ---------- */
+
+.header {
+  background: var(--primary-color);
+  padding: calc(var(--gutter) * 2);
+}
+
+/* ---------- Search ---------- */
+
+.search {
+  padding: 20px 0;
+}
+
+.search form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gutter);
+  border-radius: 20px;
+  padding: calc(var(--gutter) * 2);
+  background: var(--primary-color);
+}
+
+.search .btn {
+  background: var(--secondary-color);
+  color: #fff;
+  border-color: var(--secondary-color);
+}
+
+/* ---------- Utility ---------- */
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.form-group input {
+  width: 100%;
+}
+
+/* ---------- Weather Cards (MOBILE FIRST) ---------- */
+
+.weather-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gutter);
+  padding: 0 var(--gutter);
+  margin-bottom: 2rem;
+}
+
+.weather-card {
+  width: 100%;
+  min-height: 180px;
+  border-radius: var(--weather-card-brds);
+  background: var(--secondary-color);
+  padding: var(--gutter);
+  border: 3px solid var(--primary-color);
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+/* ---------- Tablet ---------- */
+
+@media (min-width: 600px) {
+  .search form {
+    flex-direction: row;
+    align-items: center;
   }
-  a:hover {
-    color: #747bff;
+
+  .weather-container {
+    flex-direction: row;
+    flex-wrap: wrap;
   }
-  button {
-    background-color: #f9f9f9;
+
+  .weather-card {
+    width: calc(50% - var(--gutter));
+  }
+}
+
+/* ---------- Desktop ---------- */
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .weather-card {
+    width: calc(25% - var(--gutter));
+  }
+
+  .w-50 {
+    width: 50%;
+  }
+
+  .w-25 {
+    width: 25%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .weather-card {
+    width: calc(20% - var(--gutter));
   }
 }
